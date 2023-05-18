@@ -143,7 +143,7 @@ public class WITHDRAW extends javax.swing.JFrame {
         double depositAmount;
         try {
             depositAmount = Double.parseDouble(depositAmountText);
-            if (depositAmount == 100 || depositAmount == 200 || depositAmount == 500 || depositAmount == 2000) {
+            if (depositAmount%100==0) {
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm2?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Abd41492080@");
                 stmt = conn.prepareStatement("SELECT balance FROM accounts WHERE card_number ='" + MyAccnum + "'");
                 rs = stmt.executeQuery();
@@ -173,7 +173,7 @@ public class WITHDRAW extends javax.swing.JFrame {
                 }
             }
                 else {
-                    JOptionPane.showMessageDialog(this, "INVALID DEPOSIT AMOUNT! Please enter 100, 200, 500, or 2000.");
+                    JOptionPane.showMessageDialog(this, "INVALID DEPOSIT AMOUNT! Please enter valid amount");
                 }
         }
         catch (NumberFormatException e){
